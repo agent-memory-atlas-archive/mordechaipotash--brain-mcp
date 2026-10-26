@@ -55,7 +55,7 @@ Concretely:
 ### Negative
 
 1. **Users who want multi-tenant today have to write their own adapter.** Acceptable for v0.4.0 (no one is asking for this yet); unacceptable long-term.
-2. **Risk of adapter drift.** Six months of schema evolution in viter-workspace's Migration B without a brain-mcp adapter to keep honest could lead to divergence.
+2. **Risk of adapter drift.** Six months of schema evolution in a private client workspace's Migration B without a brain-mcp adapter to keep honest could lead to divergence.
 3. **Documentation debt.** The migration file needs clearer prose explaining which columns map to which existing `brain_summaries_v6` fields when someone does write the adapter.
 
 ### Neutral
@@ -77,7 +77,7 @@ Concretely:
 
 - ADR-001 (SHELET reference implementation): [docs/adr/001-shelet-reference-implementation.md](001-shelet-reference-implementation.md)
 - Migration 003 schema: [supabase/migrations/003_shelet_l0_to_l3.sql](../../supabase/migrations/003_shelet_l0_to_l3.sql)
-- Viter Migration B (pattern source, still in drafts): `/Users/mordechai/viter-workspace/code/supabase/migrations/_drafts/20260422000000_l0_to_l3_unified_data_model.sql.draft`
-- Viter Migration C (RLS pattern, still in drafts): `/Users/mordechai/viter-workspace/code/supabase/migrations/_drafts/20260423000000_enforce_tenant_rls.sql.draft`
+- Private Migration B (pattern source, still in drafts): a private draft migration (l0_to_l3_unified_data_model)
+- Private Migration C (RLS pattern, still in drafts): a private draft migration (enforce_tenant_rls)
 - supa-brain MCP server (parallel Supabase-backed server): `~/projects/supa-brain/` (separate repo)
 - Open design question: "Same L0 → multiple L1s" (Yitzchak observation, 2026-04-22) — Migration 003 supports this via `UNIQUE (l0_id, extraction_type, extractor_version)` but the adapter semantics need a write-deduplication strategy

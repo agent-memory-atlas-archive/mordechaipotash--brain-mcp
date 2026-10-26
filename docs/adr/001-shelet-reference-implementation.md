@@ -16,7 +16,7 @@ brain-mcp currently ships 25 MCP tools over three data layers (DuckDB-backed Par
 3. **Layer-bounded permissions.** Every tool has full access to every data store. There is no structural barrier preventing an L3 synthesis tool from accidentally writing to L0 raw storage.
 4. **An external contract file** (`cogro/prompts/enhanced-extraction-v5.txt`) that breaks on public installs because the path assumes a sibling repository.
 
-In parallel, `/Users/mordechai/viter-workspace/.claude/skills/` has evolved over the last two weeks (2026-04-20 through 2026-04-24) into a working stratified skills architecture for client-engagement context. Its L3 index skill explicitly states it "mirrors Brain MCP's three-tier architecture." The isomorphism is already recognized; what's missing is the closing of the loop back to brain-mcp itself.
+In parallel, a private client workspace's skills folder has evolved over the last two weeks (2026-04-20 through 2026-04-24) into a working stratified skills architecture for engagement context. Its L3 index skill explicitly states it "mirrors Brain MCP's three-tier architecture." The isomorphism is already recognized; what's missing is the closing of the loop back to brain-mcp itself.
 
 The SHELET protocol (Stratified Human-Engaged Leverage Enhancement Technology), which Mordechai has developed since June 2025, provides the governance model: L0 immutable, each layer a pure function of the one below, every higher-layer claim carries a citation to the layer below.
 
@@ -63,7 +63,7 @@ The summarizer prompt, currently loaded from `../../../clawd/cogro/prompts/enhan
 2. **The AI-first README pattern extends to contracts.** Skills tell the AI not just *when* to call a tool but *what layer it operates on, what it must not do, what citations it must include*. This completes the "For AI Assistants" loop.
 3. **Launch blocker dissolves.** The hardcoded cogro prompt path becomes an internal skill asset.
 4. **Positioning differentiates.** "First SHELET-compliant MCP server" is a unique frame against mem0/Letta/Zep. None of them have layer-bounded skills or citation-enforced output.
-5. **Multi-tenant path opens.** The L0-L3 manifest pattern mirrors viter-workspace's forthcoming Supabase migrations (Migration B+C drafts at `viter-workspace/code/supabase/migrations/_drafts/`). When applied to brain-mcp (see ADR-002 / Migration 003), the same RLS pattern makes brain-mcp tenant-scoped.
+5. **Multi-tenant path opens.** The L0-L3 manifest pattern mirrors a private client workspace's forthcoming Supabase migrations (private draft migrations B and C). When applied to brain-mcp (see ADR-002 / Migration 003), the same RLS pattern makes brain-mcp tenant-scoped.
 6. **arXiv paper becomes publishable.** brain-mcp becomes the open-source reference implementation of the SHELET protocol, giving the paper a citeable artifact.
 
 ### Negative / Trade-offs
@@ -86,7 +86,7 @@ The summarizer prompt, currently loaded from `../../../clawd/cogro/prompts/enhan
 | 2 | Draft remaining 11 L1+L2 SKILL.md files. Move `enhanced-extraction-v5.txt` into `_prompts/`. Update `summarize.py:51` to load via `importlib.resources`. |
 | 3 | Draft 4 L3 SKILL.md files. Implement citation enforcement in `tools_prosthetic.py` — every `[domain]` claim gains `[conv_id · date]` trail. |
 | 4 | Draft remaining utility SKILL.md files. Write `make verify-skills` CI check. |
-| 5 | Ship Migration 003 (`supabase/migrations/003_shelet_l0_to_l3.sql`) — the canonical Supabase tables mirroring viter's Migration B. Optional layer, off by default. |
+| 5 | Ship Migration 003 (`supabase/migrations/003_shelet_l0_to_l3.sql`) — the canonical Supabase tables mirroring the private Migration B. Optional layer, off by default. |
 | 6 | Update LAUNCH-POSTS.md r/mcp variant with SHELET framing. Update README "For AI Assistants" section to reference the skill manifests. |
 | 7 | Tag v0.4.0. Sync CHANGELOG. Fire launch across r/ClaudeAI, r/mcp, r/adhdprogramming, HN. |
 
@@ -94,9 +94,9 @@ The summarizer prompt, currently loaded from `../../../clawd/cogro/prompts/enhan
 
 - SHELET protocol source: `/Users/mordechai/clawd/poly-wiki-public/01-frameworks/bottleneck/shelet-protocol.md`
 - SHELET evidence doc: `/Users/mordechai/clawd/poly-wiki-public/02-evidence/shelet-in-the-wild.md`
-- Viter skills (pattern source): `/Users/mordechai/viter-workspace/.claude/skills/`
-- Migration B draft (data-layer template): `/Users/mordechai/viter-workspace/code/supabase/migrations/_drafts/20260422000000_l0_to_l3_unified_data_model.sql.draft`
-- Migration C draft (RLS template): `/Users/mordechai/viter-workspace/code/supabase/migrations/_drafts/20260423000000_enforce_tenant_rls.sql.draft`
+- Private skills (pattern source): a private client workspace's skills folder
+- Migration B draft (data-layer template): a private draft migration (l0_to_l3_unified_data_model)
+- Migration C draft (RLS template): a private draft migration (enforce_tenant_rls)
 - Intellectual-DNA synthesis: `/Users/mordechai/clawd/cogro/data/distilled/intellectual-dna-synthesis-2026-04-20.md`
 - Governing rule (2026-04-19): "L0 is immutable, each layer is a pure function of the one below, every higher-layer claim carries a citation to the layer below."
 
